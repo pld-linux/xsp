@@ -2,7 +2,7 @@ Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl):	Serwer HTTP obs³uguj±cy ASP.NET
 Name:		xsp
 Version:	1.0.1
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Networking/Daemons
