@@ -2,7 +2,7 @@ Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl):	Serwer HTTP obs³uguj±cy ASP.NET
 Name:		xsp
 Version:	1.0.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Networking/Daemons
@@ -13,6 +13,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	mono-csharp >= 1.0
 Requires:	mono-csharp >= 1.0
+ExcludeArch:	mono
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
