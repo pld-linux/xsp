@@ -53,7 +53,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/httpd/httpd.conf,%{_examplesdir}/%{name}-%{version}} \
-	$RPM_BUILD_ROOT%{_httpdir}/{.wapi,asp.net}
+	$RPM_BUILD_ROOT%{_httpdir}/{.wapi,asp_net}
 
 mv -f $RPM_BUILD_ROOT%{_docdir}/%{name}/test $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
@@ -92,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/NUnitAsp.dll
 %attr(750,http,http) %{_httpdir}/.wapi
-%attr(750,http,http) %dir %{_httpdir}/asp.net
+%attr(750,http,http) %dir %{_httpdir}/asp_net
 %{_mandir}/man1/*
 %dir %{_examplesdir}/%{name}-%{version}
 %{_examplesdir}/%{name}-%{version}
