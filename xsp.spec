@@ -1,5 +1,5 @@
 Summary:	Mono ASP.NET Standalone Web Server
-Summary(pl):	Server HTTP obs³uguj±cy ASP.NET
+Summary(pl):	Serwer HTTP obs³uguj±cy ASP.NET
 Name:		xsp
 Version:	1.0
 Release:	0.1
@@ -30,8 +30,8 @@ System.Web facilities in Mono.
 
 %description -l pl
 XSP to minimalistyczny serwer HTTP utrzymuj±cy aplikacje i strony
-ASP.NET, mo¿e by¿ u¿ywany do testów i sledzenia b³êdów aplikacji
-u¿ywaj±cych klasy System.Web dostarczane z pakietem Mono.
+ASP.NET, który mo¿e byæ te¿ u¿ywany do testów i ¶ledzenia b³êdów
+aplikacji u¿ywaj±cych klasy System.Web dostarczanej z pakietem Mono.
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -56,6 +56,9 @@ install -d $RPM_BUILD_ROOT{%{_sysconfdir}/httpd/httpd.conf,%{_examplesdir}/%{nam
 	$RPM_BUILD_ROOT%{_httpdir}/{.wapi,asp_net}
 
 mv -f $RPM_BUILD_ROOT%{_docdir}/%{name}/test $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
+%clean
+rm -rf $RPM_BUILD_ROOT
 
 %pre
 if [ -n "`getgid http`" ]; then
@@ -83,9 +86,6 @@ if [ "$1" = "0" ]; then
 fi
 
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files
 %defattr(644,root,root,755)
 %doc INSTALL NEWS README ChangeLog
@@ -94,5 +94,4 @@ rm -rf $RPM_BUILD_ROOT
 %attr(750,http,http) %{_httpdir}/.wapi
 %attr(750,http,http) %dir %{_httpdir}/asp_net
 %{_mandir}/man1/*
-%dir %{_examplesdir}/%{name}-%{version}
 %{_examplesdir}/%{name}-%{version}
