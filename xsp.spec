@@ -2,7 +2,7 @@ Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl):	Serwer HTTP obs³uguj±cy ASP.NET
 Name:		xsp
 Version:	1.0
-Release:	0.1
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Networking/Daemons
@@ -92,6 +92,6 @@ fi
 %attr(755,root,root) %{_bindir}/*
 %attr(755,root,root) %{_libdir}/NUnitAsp.dll
 %attr(750,http,http) %{_httpdir}/.wapi
-%attr(750,http,http) %dir %{_httpdir}/asp_net
+%attr(750,http,http) %{_httpdir}/asp_net
 %{_mandir}/man1/*
 %{_examplesdir}/%{name}-%{version}
