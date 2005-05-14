@@ -6,7 +6,7 @@ Release:	1
 Epoch:		1
 License:	GPL
 Group:		Networking/Daemons
-Source0:	http://mono2.ximian.com/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:	http://www.go-mono.com/sources/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	49edbfb3edf93bdfb712700b18fdc461
 Patch0:		%{name}-Makefile.am.patch
 URL:		http://www.mono-project.com/
