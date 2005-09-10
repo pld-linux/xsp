@@ -1,14 +1,14 @@
 Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl):	Serwer HTTP obs³uguj±cy ASP.NET
 Name:		xsp
-Version:	1.0.9
+Version:	1.1.9
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Networking/Daemons
 Source0:	http://www.go-mono.com/sources/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	49edbfb3edf93bdfb712700b18fdc461
-Patch0:		%{name}-Makefile.am.patch
+# Source0-md5:	9ded4f1dd882112abfc1b5bb0df367cf
+#Patch0:		%{name}-Makefile.am.patch
 URL:		http://www.mono-project.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -29,7 +29,7 @@ aplikacji u¿ywaj±cych klasy System.Web dostarczanej z pakietem Mono.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch0 -p1
+#%patch0 -p1
 
 %build
 rm -rf $RPM_BUILD_ROOT
@@ -49,7 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/httpd/httpd.conf,%{_examplesdir}/%{name}-%{version}}
 
-mv -f $RPM_BUILD_ROOT%{_docdir}/%{name}/test $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+mv -f $RPM_BUILD_ROOT%{_libdir}/%{name}/test $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -59,5 +59,8 @@ rm -rf $RPM_BUILD_ROOT
 %doc INSTALL NEWS README ChangeLog
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/mono/1.0/*
+%{_libdir}/mono/2.0/*
+%{_libdir}/%{name}/1.0/*
+%{_libdir}/%{name}/2.0/*
 %{_mandir}/man1/*
 %{_examplesdir}/%{name}-%{version}
