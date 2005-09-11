@@ -56,11 +56,12 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc INSTALL NEWS README ChangeLog
+%doc AUTHORS ChangeLog NEWS README 
 %attr(755,root,root) %{_bindir}/*
 %{_libdir}/mono/1.0/*
 %{_libdir}/mono/2.0/*
-%{_libdir}/%{name}/1.0/*
-%{_libdir}/%{name}/2.0/*
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/1.0
+%{_libdir}/%{name}/2.0
 %{_mandir}/man1/*
 %{_examplesdir}/%{name}-%{version}
