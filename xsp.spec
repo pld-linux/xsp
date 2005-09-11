@@ -6,7 +6,7 @@ Release:	1
 Epoch:		1
 License:	GPL
 Group:		Networking/Daemons
-Source0:	http://www.go-mono.com/sources/%{name}/%{name}-%{version}.tar.gz
+Source0:	http://www.go-mono.com/sources/xsp/%{name}-%{version}.tar.gz
 # Source0-md5:	9ded4f1dd882112abfc1b5bb0df367cf
 #Patch0:		%{name}-Makefile.am.patch
 URL:		http://www.mono-project.com/
@@ -28,7 +28,7 @@ ASP.NET, który mo¿e byæ te¿ u¿ywany do testów i ¶ledzenia b³êdów
 aplikacji u¿ywaj±cych klasy System.Web dostarczanej z pakietem Mono.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 #%patch0 -p1
 
 %build
