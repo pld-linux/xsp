@@ -8,13 +8,12 @@ License:	GPL
 Group:		Networking/Daemons
 Source0:	http://www.go-mono.com/sources/xsp/%{name}-%{version}.tar.gz
 # Source0-md5:	9ded4f1dd882112abfc1b5bb0df367cf
-#Patch0:		%{name}-Makefile.am.patch
 URL:		http://www.mono-project.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	mono-csharp >= 1.0.6
-Requires:	mono-csharp >= 1.0.6
-ExcludeArch:	alpha
+BuildRequires:	mono-csharp >= 1.1.9
+Requires:	mono-csharp >= 1.1.9
+ExclusiveArch:	%{ix86} %{x8664} arm hppa ppc s390 s390x
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,10 +28,8 @@ aplikacji u¿ywaj±cych klasy System.Web dostarczanej z pakietem Mono.
 
 %prep
 %setup -q
-#%patch0 -p1
 
 %build
-rm -rf $RPM_BUILD_ROOT
 %{__aclocal}
 %{__autoconf}
 %{__automake}
