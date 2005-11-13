@@ -1,18 +1,18 @@
 Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl):	Serwer HTTP obs³uguj±cy ASP.NET
 Name:		xsp
-Version:	1.1.9.2
+Version:	1.1.10
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Networking/Daemons
 Source0:	http://www.go-mono.com/sources/xsp/%{name}-%{version}.tar.gz
-# Source0-md5:	e643ee879774a3230cdbdfb038241a94
+# Source0-md5:	8b5347c60951810c4fb6a96ff64c231e
 URL:		http://www.mono-project.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	mono-csharp >= 1.1.9
-Requires:	mono-csharp >= 1.1.9
+BuildRequires:	mono-csharp >= 1.1.10
+Requires:	mono-csharp >= 1.1.10
 ExclusiveArch:	%{ix86} %{x8664} arm hppa ppc s390 s390x
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -55,8 +55,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README 
 %attr(755,root,root) %{_bindir}/*
-%{_libdir}/mono/1.0/*
-%{_libdir}/mono/2.0/*
 %dir %{_libdir}/%{name}
 %{_libdir}/%{name}/1.0
 %{_libdir}/%{name}/2.0
