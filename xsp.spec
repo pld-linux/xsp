@@ -1,13 +1,13 @@
 Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl):	Serwer HTTP obs³uguj±cy ASP.NET
 Name:		xsp
-Version:	1.1.10
+Version:	1.1.13
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Networking/Daemons
 Source0:	http://www.go-mono.com/sources/xsp/%{name}-%{version}.tar.gz
-# Source0-md5:	8b5347c60951810c4fb6a96ff64c231e
+# Source0-md5:	58facfdb9d13d48f9e8ad5069500081d
 URL:		http://www.mono-project.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
