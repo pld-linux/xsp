@@ -1,13 +1,16 @@
+
+%include /usr/lib/rpm/macros.mono
+
 Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl):	Serwer HTTP obs³uguj±cy ASP.NET
 Name:		xsp
-Version:	1.1.16
+Version:	1.2.1
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Networking/Daemons
 Source0:	http://www.go-mono.com/sources/xsp/%{name}-%{version}.tar.gz
-# Source0-md5:	21253cf75855da7994bce04af672bd94
+# Source0-md5:	37333caaf4c4570ec76cf0ef9218b402
 URL:		http://www.mono-project.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -25,6 +28,18 @@ System.Web facilities in Mono.
 XSP to minimalistyczny serwer HTTP utrzymuj±cy aplikacje i strony
 ASP.NET, który mo¿e byæ te¿ u¿ywany do testów i ¶ledzenia b³êdów
 aplikacji u¿ywaj±cych klasy System.Web dostarczanej z pakietem Mono.
+
+%package debug
+Summary:	xsp libraries debugging resources
+Summary(pl):	Pliki umo¿liwiaj±ce debugowanie bibliotek xsp
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+
+%description debug
+xsp libraries debugging resources.
+
+%description debug -l pl
+Pliki umo¿liwiaj±ce debugowanie bibliotek xsp.
 
 %prep
 %setup -q
@@ -60,4 +75,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}/2.0
 %{_mandir}/man1/*
 %{_pkgconfigdir}/*.pc
+%exclude %{_prefix}/lib/mono/gac/*/*/*.mdb
+%{_prefix}/lib/mono/gac/Mono.WebServer
+%{_prefix}/lib/mono/gac/Mono.WebServer2
+%{_prefix}/lib/mono/gac/mod-mono-server
+%{_prefix}/lib/mono/gac/mod-mono-server2
+%{_prefix}/lib/mono/gac/xsp
+%{_prefix}/lib/mono/gac/xsp2
 %{_examplesdir}/%{name}-%{version}
+
+%files debug
+%defattr(644,root,root,755)
+%{_prefix}/lib/mono/gac/*/*/*.mdb
