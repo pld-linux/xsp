@@ -70,12 +70,12 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README 
 %attr(755,root,root) %{_bindir}/*
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/1.0
-%{_libdir}/%{name}/2.0
+%{_libdir}/%{name}
 %{_mandir}/man1/*
 %{_pkgconfigdir}/*.pc
 %exclude %{_prefix}/lib/mono/gac/*/*/*.mdb
+%{_prefix}/lib/mono/1.0/*
+%{_prefix}/lib/mono/2.0/*
 %{_prefix}/lib/mono/gac/Mono.WebServer
 %{_prefix}/lib/mono/gac/Mono.WebServer2
 %{_prefix}/lib/mono/gac/mod-mono-server
