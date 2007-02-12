@@ -2,7 +2,7 @@
 %include /usr/lib/rpm/macros.mono
 
 Summary:	Mono ASP.NET Standalone Web Server
-Summary(pl.UTF-8):   Serwer HTTP obsługujący ASP.NET
+Summary(pl.UTF-8):	Serwer HTTP obsługujący ASP.NET
 Name:		xsp
 Version:	1.2.3
 Release:	1
@@ -31,7 +31,7 @@ aplikacji używających klasy System.Web dostarczanej z pakietem Mono.
 
 %package debug
 Summary:	xsp libraries debugging resources
-Summary(pl.UTF-8):   Pliki umożliwiające debugowanie bibliotek xsp
+Summary(pl.UTF-8):	Pliki umożliwiające debugowanie bibliotek xsp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
