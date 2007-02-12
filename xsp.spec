@@ -2,7 +2,7 @@
 %include /usr/lib/rpm/macros.mono
 
 Summary:	Mono ASP.NET Standalone Web Server
-Summary(pl):	Serwer HTTP obs³uguj±cy ASP.NET
+Summary(pl.UTF-8):   Serwer HTTP obsÅ‚ugujÄ…cy ASP.NET
 Name:		xsp
 Version:	1.2.3
 Release:	1
@@ -24,22 +24,22 @@ XSP provides a minimalistic web server which hosts the ASP.NET runtime
 and can be used to test and debug web applications that use the
 System.Web facilities in Mono.
 
-%description -l pl
-XSP to minimalistyczny serwer HTTP utrzymuj±cy aplikacje i strony
-ASP.NET, który mo¿e byæ te¿ u¿ywany do testów i ¶ledzenia b³êdów
-aplikacji u¿ywaj±cych klasy System.Web dostarczanej z pakietem Mono.
+%description -l pl.UTF-8
+XSP to minimalistyczny serwer HTTP utrzymujÄ…cy aplikacje i strony
+ASP.NET, ktÃ³ry moÅ¼e byÄ‡ teÅ¼ uÅ¼ywany do testÃ³w i Å›ledzenia bÅ‚Ä™dÃ³w
+aplikacji uÅ¼ywajÄ…cych klasy System.Web dostarczanej z pakietem Mono.
 
 %package debug
 Summary:	xsp libraries debugging resources
-Summary(pl):	Pliki umo¿liwiaj±ce debugowanie bibliotek xsp
+Summary(pl.UTF-8):   Pliki umoÅ¼liwiajÄ…ce debugowanie bibliotek xsp
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description debug
 xsp libraries debugging resources.
 
-%description debug -l pl
-Pliki umo¿liwiaj±ce debugowanie bibliotek xsp.
+%description debug -l pl.UTF-8
+Pliki umoÅ¼liwiajÄ…ce debugowanie bibliotek xsp.
 
 %prep
 %setup -q
