@@ -16,7 +16,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	mono-csharp >= 1.1.10
 Requires:	mono-csharp >= 1.1.10
-ExclusiveArch:	%{ix86} %{x8664} arm hppa ppc s390 s390x
+ExcludeArch:	i386
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
