@@ -33,7 +33,7 @@ aplikacji używających klasy System.Web dostarczanej z pakietem Mono.
 Summary:	xsp libraries debugging resources
 Summary(pl.UTF-8):	Pliki umożliwiające debugowanie bibliotek xsp
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description debug
 xsp libraries debugging resources.
