@@ -3,7 +3,7 @@ Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl):	Serwer HTTP obs³uguj±cy ASP.NET
 Name:		xsp
 Version:	1.2.3
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Networking/Daemons
@@ -31,7 +31,7 @@ aplikacji u¿ywaj±cych klasy System.Web dostarczanej z pakietem Mono.
 Summary:	xsp libraries debugging resources
 Summary(pl):	Pliki umo¿liwiaj±ce debugowanie bibliotek xsp
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 
 %description debug
 xsp libraries debugging resources.
