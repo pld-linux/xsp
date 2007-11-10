@@ -1,16 +1,14 @@
-
 %include /usr/lib/rpm/macros.mono
-
 Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl.UTF-8):	Serwer HTTP obsługujący ASP.NET
 Name:		xsp
-Version:	1.2.4
+Version:	1.2.5
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Networking/Daemons
 Source0:	http://www.go-mono.com/sources/xsp/%{name}-%{version}.tar.bz2
-# Source0-md5:	b1b9641d2ffeaca465a29ff62c5584e2
+# Source0-md5:	adb7871e5ebeefcf8ed959523442c0fb
 URL:		http://www.mono-project.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -50,7 +48,7 @@ Pliki umożliwiające debugowanie bibliotek xsp.
 %{__automake}
 
 %configure
-%{__make} \
+%{__make} -j1 \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %install
