@@ -2,18 +2,20 @@
 Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl.UTF-8):	Serwer HTTP obsługujący ASP.NET
 Name:		xsp
-Version:	1.2.5
+Version:	1.2.6
 Release:	1
 Epoch:		1
-License:	GPL
+License:	MIT X11
 Group:		Networking/Daemons
-Source0:	http://www.go-mono.com/sources/xsp/%{name}-%{version}.tar.bz2
-# Source0-md5:	adb7871e5ebeefcf8ed959523442c0fb
+#Source0Download: http://go-mono.com/sources-stable/
+Source0:	http://go-mono.com/sources/xsp/%{name}-%{version}.tar.bz2
+# Source0-md5:	61dd61398f041002292e5514c28decd3
 URL:		http://www.mono-project.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	mono-csharp >= 1.1.10
-Requires:	mono-csharp >= 1.1.10
+BuildRequires:	mono-csharp >= 1.2.6
+BuildRequires:	mono-jscript >= 1.2.6
+Requires:	mono-csharp >= 1.2.6
 ExcludeArch:	i386
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -66,20 +68,40 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README 
-%attr(755,root,root) %{_bindir}/*
+%doc AUTHORS COPYING ChangeLog NEWS README 
+%attr(755,root,root) %{_bindir}/asp-state
+%attr(755,root,root) %{_bindir}/asp-state2
+%attr(755,root,root) %{_bindir}/dbsessmgr
+%attr(755,root,root) %{_bindir}/dbsessmgr2
+%attr(755,root,root) %{_bindir}/fastcgi-mono-server
+%attr(755,root,root) %{_bindir}/fastcgi-mono-server2
+%attr(755,root,root) %{_bindir}/mod-mono-server
+%attr(755,root,root) %{_bindir}/mod-mono-server2
+%attr(755,root,root) %{_bindir}/xsp
+%attr(755,root,root) %{_bindir}/xsp2
 %{_libdir}/%{name}
-%{_mandir}/man1/*
-%{_pkgconfigdir}/*.pc
 %exclude %{_prefix}/lib/mono/gac/*/*/*.mdb
-%{_prefix}/lib/mono/1.0/*
-%{_prefix}/lib/mono/2.0/*
+%{_prefix}/lib/mono/1.0/Mono.WebServer.dll
+%{_prefix}/lib/mono/1.0/mod-mono-server.exe
+%{_prefix}/lib/mono/1.0/xsp.exe
+%{_prefix}/lib/mono/2.0/Mono.WebServer2.dll
+%{_prefix}/lib/mono/2.0/mod-mono-server2.exe
+%{_prefix}/lib/mono/2.0/xsp2.exe
 %{_prefix}/lib/mono/gac/Mono.WebServer
 %{_prefix}/lib/mono/gac/Mono.WebServer2
+%{_prefix}/lib/mono/gac/fastcgi-mono-server
+%{_prefix}/lib/mono/gac/fastcgi-mono-server2
 %{_prefix}/lib/mono/gac/mod-mono-server
 %{_prefix}/lib/mono/gac/mod-mono-server2
 %{_prefix}/lib/mono/gac/xsp
 %{_prefix}/lib/mono/gac/xsp2
+%{_pkgconfigdir}/xsp.pc
+%{_pkgconfigdir}/xsp-2.pc
+%{_mandir}/man1/asp-state.1*
+%{_mandir}/man1/dbsessmgr.1*
+%{_mandir}/man1/fastcgi-mono-server.1*
+%{_mandir}/man1/mod-mono-server.1*
+%{_mandir}/man1/xsp.1*
 %{_examplesdir}/%{name}-%{version}
 
 %files debug
