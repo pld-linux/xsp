@@ -2,20 +2,21 @@
 Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl.UTF-8):	Serwer HTTP obsługujący ASP.NET
 Name:		xsp
-Version:	1.2.6
+Version:	1.9.1
 Release:	1
 Epoch:		1
 License:	MIT X11
 Group:		Networking/Daemons
-#Source0Download: http://go-mono.com/sources-stable/
-Source0:	http://go-mono.com/sources/xsp/%{name}-%{version}.tar.bz2
-# Source0-md5:	61dd61398f041002292e5514c28decd3
+# latest downloads summary at http://ftp.novell.com/pub/mono/sources-stable/
+Source0:	http://ftp.novell.com/pub/mono/sources/xsp/%{name}-%{version}.tar.bz2
+# Source0-md5:	f53f440714a8126d7221212c6d79ea11
 URL:		http://www.mono-project.com/
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
-BuildRequires:	mono-csharp >= 1.2.6
-BuildRequires:	mono-jscript >= 1.2.6
-Requires:	mono-csharp >= 1.2.6
+BuildRequires:	mono-csharp >= 1.9.1
+BuildRequires:	mono-jscript >= 1.9.1
+BuildRequires:	pkgconfig
+Requires:	mono-csharp >= 1.9.1
 ExcludeArch:	i386
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -82,9 +83,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/%{name}
 %exclude %{_prefix}/lib/mono/gac/*/*/*.mdb
 %{_prefix}/lib/mono/1.0/Mono.WebServer.dll
+%{_prefix}/lib/mono/1.0/fastcgi-mono-server.exe
 %{_prefix}/lib/mono/1.0/mod-mono-server.exe
 %{_prefix}/lib/mono/1.0/xsp.exe
 %{_prefix}/lib/mono/2.0/Mono.WebServer2.dll
+%{_prefix}/lib/mono/2.0/fastcgi-mono-server2.exe
 %{_prefix}/lib/mono/2.0/mod-mono-server2.exe
 %{_prefix}/lib/mono/2.0/xsp2.exe
 %{_prefix}/lib/mono/gac/Mono.WebServer
