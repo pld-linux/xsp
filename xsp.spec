@@ -2,21 +2,21 @@
 Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl.UTF-8):	Serwer HTTP obsługujący ASP.NET
 Name:		xsp
-Version:	1.9.1
+Version:	2.0
 Release:	1
 Epoch:		1
 License:	MIT X11
 Group:		Networking/Daemons
 # latest downloads summary at http://ftp.novell.com/pub/mono/sources-stable/
-Source0:	http://ftp.novell.com/pub/mono/sources/xsp/%{name}-%{version}.tar.bz2
-# Source0-md5:	f53f440714a8126d7221212c6d79ea11
+Source0:	ftp://ftp.novell.com/pub/mono/sources/xsp/%{name}-%{version}.tar.bz2
+# Source0-md5:	098037c10354174c4d4bab5f1a0fd7f6
 URL:		http://www.mono-project.com/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
-BuildRequires:	mono-csharp >= 1.9.1
-BuildRequires:	mono-jscript >= 1.9.1
+BuildRequires:	mono-csharp >= 2.0
+BuildRequires:	mono-jscript >= 2.0
 BuildRequires:	pkgconfig
-Requires:	mono-csharp >= 1.9.1
+Requires:	mono-csharp >= 2.0
 ExcludeArch:	i386
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -70,16 +70,11 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS README 
-%attr(755,root,root) %{_bindir}/asp-state
-%attr(755,root,root) %{_bindir}/asp-state2
-%attr(755,root,root) %{_bindir}/dbsessmgr
-%attr(755,root,root) %{_bindir}/dbsessmgr2
-%attr(755,root,root) %{_bindir}/fastcgi-mono-server
-%attr(755,root,root) %{_bindir}/fastcgi-mono-server2
-%attr(755,root,root) %{_bindir}/mod-mono-server
-%attr(755,root,root) %{_bindir}/mod-mono-server2
-%attr(755,root,root) %{_bindir}/xsp
-%attr(755,root,root) %{_bindir}/xsp2
+%attr(755,root,root) %{_bindir}/asp-state*
+%attr(755,root,root) %{_bindir}/dbsessmgr*
+%attr(755,root,root) %{_bindir}/fastcgi-mono-server*
+%attr(755,root,root) %{_bindir}/mod-mono-server*
+%attr(755,root,root) %{_bindir}/xsp*
 %{_libdir}/%{name}
 %exclude %{_prefix}/lib/mono/gac/*/*/*.mdb
 %{_prefix}/lib/mono/1.0/Mono.WebServer.dll
