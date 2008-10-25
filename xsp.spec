@@ -6,7 +6,7 @@ Version:	2.0
 Release:	1
 Epoch:		1
 License:	MIT X11
-Group:		Networking/Daemons
+Group:		Networking/Daemons/HTTP
 # latest downloads summary at http://ftp.novell.com/pub/mono/sources-stable/
 Source0:	ftp://ftp.novell.com/pub/mono/sources/xsp/%{name}-%{version}.tar.bz2
 # Source0-md5:	098037c10354174c4d4bab5f1a0fd7f6
