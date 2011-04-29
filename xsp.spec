@@ -2,14 +2,14 @@
 Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl.UTF-8):	Serwer HTTP obsługujący ASP.NET
 Name:		xsp
-Version:	2.10
+Version:	2.10.2
 Release:	1
 Epoch:		1
 License:	MIT X11
 Group:		Networking/Daemons/HTTP
 # latest downloads summary at http://ftp.novell.com/pub/mono/sources-stable/
 Source0:	ftp://ftp.novell.com/pub/mono/sources/xsp/%{name}-%{version}.tar.bz2
-# Source0-md5:	aec9369a00a9728801ea2587a1a8fd9c
+# Source0-md5:	4fe62fc95ad5dc136d8a7f3299d523b6
 URL:		http://www.mono-project.com/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
@@ -58,7 +58,7 @@ Pliki umożliwiające debugowanie bibliotek xsp.
 %setup -q
 
 %build
-%{__aclocal}
+%{__aclocal} -I build/m4/shamrock -I build/m4/shave
 %{__autoconf}
 %{__automake}
 
