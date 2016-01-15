@@ -2,20 +2,20 @@
 Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl.UTF-8):	Serwer HTTP obsługujący ASP.NET
 Name:		xsp
-Version:	2.10.2
+Version:	4.2
 Release:	1
 Epoch:		1
 License:	MIT X11
 Group:		Networking/Daemons/HTTP
-# latest downloads summary at http://ftp.novell.com/pub/mono/sources-stable/
-Source0:	ftp://ftp.novell.com/pub/mono/sources/xsp/%{name}-%{version}.tar.bz2
-# Source0-md5:	4fe62fc95ad5dc136d8a7f3299d523b6
+Source0:	http://download.mono-project.com/sources/xsp/%{name}-%{version}.tar.gz
+# Source0-md5:	45a4593b28660a697c9148f2ac6b281d
 URL:		http://www.mono-project.com/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
-BuildRequires:	mono-csharp >= 2.10
+BuildRequires:	libtool
+BuildRequires:	mono-csharp >= 4.0
 BuildRequires:	pkgconfig
-Requires:	mono-csharp >= 2.10
+Requires:	mono-csharp >= 4.0
 ExcludeArch:	i386
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -58,11 +58,13 @@ Pliki umożliwiające debugowanie bibliotek xsp.
 %setup -q
 
 %build
+%{__libtoolize}
 %{__aclocal} -I build/m4/shamrock -I build/m4/shave
 %{__autoconf}
 %{__automake}
 
-%configure
+%configure \
+	--disable-static
 %{__make} -j1
 
 %install
@@ -71,44 +73,51 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/libfpm_helper.la
+# 2.0 profile is no longer supported
+%{__rm} $RPM_BUILD_ROOT%{_bindir}/{asp-state2,dbsessmgr2,fastcgi-mono-server2,mod-mono-server2,xsp2} \
+	$RPM_BUILD_ROOT%{_pkgconfigdir}/xsp-2.pc
+# switch default scripts to 4.0 profile
+for f in asp-state dbsessmgr fastcgi-mono-server mod-mono-server xsp ; do
+	ln -sf ${f}4 $RPM_BUILD_ROOT%{_bindir}/$f
+done
+
 install -d $RPM_BUILD_ROOT{%{_sysconfdir}/httpd/httpd.conf,%{_examplesdir}/%{name}-%{version}}
 
-mv -f $RPM_BUILD_ROOT%{_libdir}/%{name}/test $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+%{__mv} $RPM_BUILD_ROOT%{_libdir}/%{name}/test $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS README 
 %attr(755,root,root) %{_bindir}/asp-state
-%attr(755,root,root) %{_bindir}/asp-state2
 %attr(755,root,root) %{_bindir}/asp-state4
 %attr(755,root,root) %{_bindir}/dbsessmgr
-%attr(755,root,root) %{_bindir}/dbsessmgr2
 %attr(755,root,root) %{_bindir}/dbsessmgr4
 %attr(755,root,root) %{_bindir}/fastcgi-mono-server
-%attr(755,root,root) %{_bindir}/fastcgi-mono-server2
 %attr(755,root,root) %{_bindir}/fastcgi-mono-server4
 %attr(755,root,root) %{_bindir}/mod-mono-server
-%attr(755,root,root) %{_bindir}/mod-mono-server2
 %attr(755,root,root) %{_bindir}/mod-mono-server4
+%attr(755,root,root) %{_bindir}/mono-fpm
+%attr(755,root,root) %{_bindir}/shim
 %attr(755,root,root) %{_bindir}/xsp
-%attr(755,root,root) %{_bindir}/xsp2
 %attr(755,root,root) %{_bindir}/xsp4
+%attr(755,root,root) %{_libdir}/libfpm_helper.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libfpm_helper.so.0
 %{_libdir}/%{name}
-%{_prefix}/lib/mono/2.0/fastcgi-mono-server2.exe
-%{_prefix}/lib/mono/2.0/mod-mono-server2.exe
-%{_prefix}/lib/mono/2.0/xsp2.exe
-%{_prefix}/lib/mono/4.0/fastcgi-mono-server4.exe
-%{_prefix}/lib/mono/4.0/mod-mono-server4.exe
-%{_prefix}/lib/mono/4.0/xsp4.exe
+%{_prefix}/lib/mono/4.5/fastcgi-mono-server4.exe
+%{_prefix}/lib/mono/4.5/mod-mono-server4.exe
+%{_prefix}/lib/mono/4.5/mono-fpm.exe
+%{_prefix}/lib/mono/4.5/xsp4.exe
 %{_prefix}/lib/mono/gac/Mono.WebServer2
-%{_prefix}/lib/mono/gac/fastcgi-mono-server2
 %{_prefix}/lib/mono/gac/fastcgi-mono-server4
-%{_prefix}/lib/mono/gac/mod-mono-server2
 %{_prefix}/lib/mono/gac/mod-mono-server4
-%{_prefix}/lib/mono/gac/xsp2
+%{_prefix}/lib/mono/gac/mono-fpm
 %{_prefix}/lib/mono/gac/xsp4
 %exclude %{_prefix}/lib/mono/gac/*/*/*.mdb
 %{_mandir}/man1/asp-state.1*
@@ -119,11 +128,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_prefix}/lib/mono/2.0/Mono.WebServer2.dll
-%{_prefix}/lib/mono/4.0/Mono.WebServer2.dll
+%attr(755,root,root) %{_libdir}/libfpm_helper.so
+%{_prefix}/lib/mono/4.5/Mono.WebServer2.dll
 %{_prefix}/lib/monodoc/sources/Mono.FastCGI.*
 %{_prefix}/lib/monodoc/sources/Mono.WebServer.*
-%{_pkgconfigdir}/xsp-2.pc
 %{_pkgconfigdir}/xsp-4.pc
 %{_examplesdir}/%{name}-%{version}
 
