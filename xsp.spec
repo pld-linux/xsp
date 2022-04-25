@@ -1,19 +1,20 @@
 Summary:	Mono ASP.NET Standalone Web Server
 Summary(pl.UTF-8):	Serwer HTTP obsługujący ASP.NET
 Name:		xsp
-Version:	4.2
+Version:	4.7.1
 Release:	1
 Epoch:		1
-License:	MIT X11
+License:	MIT
 Group:		Networking/Daemons/HTTP
-Source0:	http://download.mono-project.com/sources/xsp/%{name}-%{version}.tar.gz
-# Source0-md5:	45a4593b28660a697c9148f2ac6b281d
-URL:		http://www.mono-project.com/
+Source0:	https://download.mono-project.com/sources/xsp/%{name}-%{version}.tar.gz
+# Source0-md5:	cdcead997e96d86b24a2766f5f04e5d4
+URL:		https://www.mono-project.com/
 BuildRequires:	autoconf >= 2.57
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	mono-csharp >= 4.0
 BuildRequires:	pkgconfig
+BuildRequires:	rpmbuild(macros) >= 2.015
 Requires:	mono-csharp >= 4.0
 ExcludeArch:	i386
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
